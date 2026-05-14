@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-space), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Colores extraídos del contexto narrativo */
+  --color-brand-space: #050505; /* Negro Espacial */
+  --color-brand-orange: #FF5A00; /* Fuego Insubordinado */
+  --color-brand-cyan: #00F0FF; /* El Vínculo Desechable / Cian Metálico */
+  --color-brand-magenta: #FF0055; /* El Laberinto Conceptual / Fucsia */
+  --color-brand-glass: rgba(255, 255, 255, 0.05); /* La Máscara de Monet */
+}
+
+@layer base {
+  :root {
+    --background: var(--color-brand-space);
+    --foreground: #ffffff;
+  }
+
+  html, body {
+    background-color: var(--background);
+    color: var(--foreground);
+    overscroll-behavior: none; /* Prevenir bounce en MacOS para Lenis */
+  }
+
+  /* Utilidades para Lenis */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+/* Ocultar barra de scroll nativa para mayor inmersión */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

@@ -1,0 +1,101 @@
+# ARQUETIPOS PROFUNDOS Y ANÁLISIS PSICOLÓGICO: ERIC DOMINICI
+
+Este documento preserva la integridad total del perfil narrativo y psicológico derivado del análisis exhaustivo de los escritos personales de Eric, sin recortes. Es la fuente de la verdad para la implementación técnica, UI/UX y animaciones 3D.
+
+---
+
+## PARTE 1: LA VISIÓN DEL ESCRITOR (Análisis Psicológico Directo)
+
+### 1. Identidad Central y Visión del Mundo
+* **Temas Recurrentes:** La reconstrucción de la identidad mediante la autocrítica, el desmantelamiento de narrativas heredadas y la búsqueda de una trascendencia personal en un universo carente de significado intrínseco (existencialismo optimista).
+* **Caos vs. Orden:** El caos se percibe como el estado natural de la experiencia subjetiva, mientras que el orden es una arquitectura interna deliberada, no impuesta. La "limpieza" del ser implica habitar el vacío para reconstruirse sobre cimientos inquebrantables.
+* **Crecimiento y Tecnología:** La tecnología (especialmente la IA y redes sociales) se ve como una red de estímulos que puede erosionar la voluntad si no se media por la conciencia. El crecimiento es un "viaje de autotrascendencia" que exige dolor, introspección y la voluntad de ser "arquitecto de uno mismo".
+* **Filosofía de Vida:** Una síntesis de maquiavelismo táctico (en la juventud/experimentación) que evoluciona hacia una ética de la autenticidad radical y el dominio propio. La vida es un "proceso" y un "lienzo inacabado" donde la mayor traición es no conocerse a uno mismo.
+* **Existencialismo Arquitectónico:** La realidad no se descubre, se construye. Tu visión sostiene que el universo carece de significado intrínseco, lo cual no es una tragedia, sino la máxima oportunidad de libertad.
+* **Crecimiento mediante la Disonancia:** El progreso real no es lineal ni cómodo; requiere habitar la "herida de la incompletud" y el dolor de la introspección para desmantelar las "identidades alquiladas".
+
+### 2. Tono y Voz Narrativa
+* **Analítico-Clínico / Químico:** Descompone emociones humanas (como el amor) en procesos químicos (dopamina, oxitocina, vasopresina, noradrenalina) para desmitificar la realidad y mantener el control racional. Suena como un cirujano de la psique.
+* **Filosófico-Existencial / Seductor:** Utiliza la reflexión profunda para cuestionar la naturaleza de la realidad. Su voz invita al desafío. Es un tono que no pide permiso, sino que "insinúa" y "provoca", utilizando el misterio como una herramienta de poder para capturar la atención del otro.
+* **Crudo y Honesto (Oscuro):** No teme admitir facetas "siniestras", "maquiavélicas", "frías" o momentos de debilidad y soledad absoluta como parte de una personalidad compleja que rechaza la mediocridad del conformismo.
+* **Poético-Científico:** Emplea imágenes visuales potentes (galaxias, laberintos, fuegos artificiales) mezcladas con terminología técnica y psicológica (sesgos, algoritmos, heurística) para explicar conceptos abstractos.
+
+### 3. Impulsores Emocionales (Drivers)
+* **Inspiración (Fuego):**
+  * La "fusión con una mente inteligente", el éxtasis de "follarse una mente", extrayendo ideas hasta la última gota.
+  * El éxtasis del descubrimiento intelectual y la belleza en las imperfecciones.
+  * La búsqueda de mentes inquietas, creativas y "brillantes" que desafíen la normalidad.
+  * La autotranscendencia: El proceso de ver a alguien (o a ti mismo) transformarse y "arder" en lugar de solo durar.
+* **Frustraciones (Erosión):**
+  * **Inercia Social ("La Plebe"):** La gente que vive en "piloto automático", bajo "identidades alquiladas", la falta de autocrítica y la sumisión ciega a dogmas.
+  * **Superficialidad Digital:** El culto a la imagen física sobre la profundidad intelectual, la desilusión de los perfiles curados y la rapidez del "descarte".
+  * **Estancamiento:** La ineficiencia emocional, el quedarse en la "zona de confort" y el miedo a mirar el horizonte completo (incluyendo el dolor).
+  * **Ceguera Emocional:** El "ciego dotado de vista" que no puede percibir el valor profundo de las cosas o personas.
+
+### 4. Conexión Personal con el Mundo
+* **El Gran Estratega (Arquitecto de Realidades):** No busca adaptarse al mundo, sino construir su propia realidad. Analiza datos, detecta vulnerabilidades y diseña entornos (o personalidades) para influir y ganar control.
+* **El Guía Oscuro / Explorador (Incomprendido):** Se posiciona como alguien que ha transitado "senderos oscuros y luminosos", validando la soledad e incomprensión de otros, ofreciendo una "brújula" para navegar el laberinto de la psique.
+* **El Espejo / Testigo de la Existencia:** Actúa como un "testigo de la vida", buscando "detener el tiempo" observando los detalles más ínfimos y maravillosos de otra persona que el resto del mundo ignora.
+* **El Rebelde / Camaleón Intelectual:** Desafía dogmas y convenciones. Es capaz de adaptar su máscara según el objetivo, utilizando la elocuencia y la inteligencia como armas de seducción y persuasión.
+
+### 5. Palabras Clave y Metáforas (Instrucciones Directas para Three.js y UI)
+1. **"El Laberinto Conceptual" (Fucsia/Violeta Profundo):** Representa la mente humana. Visualización: Estructura que se auto-genera y expande.
+2. **"Follarse una Mente" / "Fuego Insubordinado" (Naranja Eléctrico):** Conexión intelectual máxima. Visualización: La pulsión de vida auténtica que "arde" y consume lo superficial (Partículas / Global Illumination).
+3. **"Arquitecto de uno mismo" / "Forjarse":** La acción de construir la identidad.
+4. **"Dopamina Instantánea" / "El Vínculo Desechable" / "Deslizar" (Gris Metálico/Cian):** Crítica a la rapidez moderna. Visualización: Frialdad de la desconexión moderna; animaciones rápidas de descarte o desaparición de elementos.
+5. **"Corriente de Consciencia" / "El Yo como Proceso".**
+6. **"Galaxia de Información" (Negro Espacial/Blanco):** Visualización: El cerebro como un cúmulo de estrellas (datos) que el tercer nivel mental filtra y conecta.
+7. **"La Máscara de Monet" (Transparencias/Reflejos):** Visualización: La belleza en la ausencia de contornos definidos; multiplicidad de facetas. Efectos de distorsión (glassmorphism) y reflejos.
+
+---
+
+## PARTE 2: IMPLEMENTACIÓN POR ARQUETIPOS DE USUARIO (Targeting Web)
+
+### Para MARCO (CTO):
+- Show architectural thinking in hero
+- Technical depth in projects section
+- Code-ish visualization (pero hermosa)
+- Performance metrics visible
+- Paleta: azul oscuro + gris
+
+### Para SOFÍA (CEO):
+- Numbers in hero (3 sec)
+- ROI-focused case studies
+- Exponential growth visualization
+- Velocidad en todas animaciones
+- Paleta: oro + gris carbón
+
+### Para LUCAS (Crisis):
+- Caos→Orden animation prominent
+- Crisis case study featured
+- Timeline de 30 días visible
+- Empatía en lenguaje (copy)
+- Paleta: naranja + verde
+
+### Para JAVIER (Junior):
+- Origin story first/prominent
+- Relatable tone (not distant)
+- "Skill tree" visualization
+- Mentoría section clear
+- Paleta: azul + verde + amarillo
+
+### Para DANIELA (Recruiter):
+- Profile section scannable (30 sec)
+- Certifications as badges
+- Stack clear + categorized
+- Disponibilidad explícita
+- Paleta: blanco + azul + verde
+
+### Para ANDRÉS (Peer):
+- Intellectual depth visible
+- Articles/essays prominent
+- Sophistication in design
+- No bullshit tone
+- Paleta: negro + blanco + dorado
+
+### Para CAROLINA (Cliente):
+- Case study similar to hers
+- Before/After visible
+- Process transparent
+- Guarantees/safety nets
+- Paleta: verde + oro + azul

@@ -6,33 +6,33 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const eras = [
   {
     year: "2021",
-    title: "LOS FUNDAMENTOS",
-    desc: "Bases sólidas y construcción algorítmica desde cero.",
-    tech: "React, Algorithms, Frontend",
+    title: "LOS FUNDAMENTOS TÉCNICOS",
+    desc: "Bases sólidas en ingeniería de software. Construcción algorítmica desde cero y dominio de la ejecución técnica pura.",
+    tech: "Software Engineering, Algorithms, Delivery",
     color: "text-brand-magenta",
     borderColor: "border-brand-magenta"
   },
   {
     year: "2023",
-    title: "FULL-STACK",
-    desc: "Transición a arquitecturas backend con Python y despliegues web masivos.",
-    tech: "Python, Backend, Full-Stack",
+    title: "TRANSICIÓN AL PRODUCTO",
+    desc: "Del código a la visión global. Despliegues de sistemas masivos y las primeras incursiones en la gestión de flujo, automatización de procesos y arquitecturas Backend.",
+    tech: "Full-Stack, Lean IT, Process Automation",
     color: "text-brand-orange",
     borderColor: "border-brand-orange"
   },
   {
     year: "2024",
-    title: "ARQUITECTURAS MASIVAS",
-    desc: "Construcción de sistemas institucionales, intranets y dashboards financieros.",
-    tech: "TypeScript, Next.js, Node",
+    title: "ORDEN EN EL CAOS INSTITUCIONAL",
+    desc: "Liderazgo en migraciones críticas (analítica del IRS) y plataformas gubernamentales. Mitigación de riesgos, desmantelamiento del caos operativo y entrega de valor bajo presión extrema.",
+    tech: "Scrum Master, Kanban, Risk Mitigation",
     color: "text-brand-cyan",
     borderColor: "border-brand-cyan"
   },
   {
     year: "PRESENTE",
     title: "ARQUITECTO DE REALIDADES",
-    desc: "Dominio absoluto de la integración técnica y narrativa visual. Creador de ecosistemas digitales completos.",
-    tech: "Systems Architecture, PM, 3D",
+    desc: "El puente estratégico entre la visión de negocio y la ingeniería de élite. Liderazgo de equipos, mentoría ágil y orquestación de ecosistemas digitales que escalan.",
+    tech: "Agile Coach, Product Strategy, Tech Lead",
     color: "text-white",
     borderColor: "border-white"
   }

@@ -5,7 +5,6 @@ import { Preload, Environment, PerformanceMonitor } from '@react-three/drei';
 import { Suspense, useState } from 'react';
 import HeroParticles from './HeroParticles';
 import AboutMonet from './AboutMonet';
-import TimelineMaze from './TimelineMaze';
 import ProjectsFluid from './ProjectsFluid';
 
 export default function Scene() {
@@ -23,7 +22,7 @@ export default function Scene() {
             <fog attach="fog" args={['#050505', 5, 40]} />
             <HeroParticles />
             <AboutMonet />
-            <TimelineMaze />
+
             <ProjectsFluid />
             
             <ambientLight intensity={0.5} />

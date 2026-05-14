@@ -7,6 +7,7 @@ import CreatorConsole from '@/components/dom/CreatorConsole';
 import Essays from '@/components/dom/Essays';
 import SkillCloud from '@/components/dom/SkillCloud';
 import ContactTerminal from '@/components/dom/ContactTerminal';
+import TimelineDOM from '@/components/dom/TimelineDOM';
 
 export default function Home() {
   return (
@@ -60,18 +61,13 @@ export default function Home() {
         {/* CREADOR CONSOLE (Split Screen) */}
         <CreatorConsole />
 
-        {/* TIMELINE (El Laberinto Z-Axis) */}
-        <section className="h-[300vh] w-full pointer-events-none flex flex-col items-center justify-center relative">
-            <div className="sticky top-1/2 -translate-y-1/2 text-center mix-blend-difference pointer-events-auto">
-                <p className="text-brand-cyan font-mono tracking-widest uppercase text-sm mb-4">Crecimiento mediante la Disonancia</p>
-                <h2 className="text-3xl md:text-5xl font-bold text-white uppercase">El Laberinto</h2>
-            </div>
-        </section>
+        {/* TIMELINE (El Laberinto Horizontal) */}
+        <TimelineDOM />
 
         {/* PROYECTOS (Fuego Insubordinado) */}
         <section className="w-full pointer-events-none flex flex-col items-center justify-center relative bg-black/50 backdrop-blur-sm pt-32">
             <div className="w-full max-w-6xl mx-auto px-8 pointer-events-auto mb-32">
-                <h2 className="text-4xl md:text-7xl font-bold text-white mb-24 mix-blend-difference">Casos de <span className="text-brand-orange italic">Estudio.</span></h2>
+
                 <ProjectList />
             </div>
             

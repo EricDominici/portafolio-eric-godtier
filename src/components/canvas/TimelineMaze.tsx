@@ -6,172 +6,181 @@ import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { useStore } from '@/store/useStore';
 
-// Partículas que simulan velocidad de luz / transferencia de datos
-function WarpParticles() {
-  const count = 400;
-  const meshRef = useRef<THREE.InstancedMesh>(null);
+function ChaosGate({ year, desc, z, color }: any) {
+  const textRef = useRef<any>(null);
+  const descRef = useRef<any>(null);
+  const fragmentsRef = useRef<THREE.InstancedMesh>(null);
+  
+  const fragmentCount = 150;
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  
+  // Posiciones entrópicas aleatorias iniciales
+  const fragmentsData = useMemo(() => {
+    return Array.from({ length: fragmentCount }, () => ({
+      x: (Math.random() - 0.5) * 60,
+      y: (Math.random() - 0.5) * 60,
+      z: (Math.random() - 0.5) * 60,
+      rx: Math.random() * Math.PI * 2,
+      ry: Math.random() * Math.PI * 2,
+      rz: Math.random() * Math.PI * 2,
+    }));
+  }, []);
 
-  // Generar posiciones iniciales aleatorias en un tubo gigante
-  const particles = useMemo(() => {
-    const temp = [];
-    for (let i = 0; i < count; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const radius = 5 + Math.random() * 20; // Entre 5 y 25 de radio
-      const x = Math.cos(theta) * radius;
-      const y = Math.sin(theta) * radius;
-      const z = Math.random() * -200; // Distribuidas a lo largo del túnel
-      const speed = 0.5 + Math.random() * 2;
-      temp.push({ x, y, z, speed });
+  useFrame((state) => {
+    if (!fragmentsRef.current || !textRef.current || !descRef.current) return;
+    
+    const rawProgress = useStore.getState().scrollProgress;
+    const timelineProgress = Math.max(0, (rawProgress - 0.4) * 2.5);
+    const globalZ = timelineProgress * 200; 
+    
+    // Z absoluto respecto a la cámara
+    const absoluteZ = z + globalZ; 
+
+    let assemblyFactor = 1; // 1 = Entropía total (esparcidos)
+    let shatterFactor = 0;  // 1 = Explosión Kinética (cámara los atraviesa)
+    
+    if (absoluteZ < -80) {
+      assemblyFactor = 1; 
+    } else if (absoluteZ >= -80 && absoluteZ < -15) {
+      // Ensamblaje magnético
+      assemblyFactor = Math.abs(absoluteZ + 15) / 65; 
+    } else if (absoluteZ >= -15 && absoluteZ <= 10) {
+      // Orden perfecto -> Explosión
+      assemblyFactor = 0;
+      shatterFactor = (absoluteZ + 15) / 25; 
+    } else if (absoluteZ > 10) {
+      assemblyFactor = 0;
+      shatterFactor = 1; 
     }
-    return temp;
-  }, [count]);
 
-  useFrame(() => {
-    if (!meshRef.current) return;
-    const scrollSpeed = Math.max(0, (useStore.getState().scrollProgress - 0.4) * 2.5);
-    // Velocidad base + turbo por scroll
-    const globalSpeed = 0.5 + scrollSpeed * 10;
+    // Actualizar matriz de fragmentos
+    fragmentsData.forEach((frag, i) => {
+      // Orden: Un muro o anillo rectangular arquitectónico rodeando el texto
+      const t = i / fragmentCount;
+      const radiusX = 20;
+      const radiusY = 10;
+      const orderedX = Math.cos(t * Math.PI * 2) * radiusX;
+      const orderedY = Math.sin(t * Math.PI * 2) * radiusY;
+      const orderedZ = Math.sin(t * Math.PI * 8) * 2; // Ligera ondulación
 
-    particles.forEach((particle, i) => {
-      particle.z += particle.speed * globalSpeed;
-      if (particle.z > 20) {
-        particle.z = -200; // Resetear cuando pasan la cámara
+      // Explosión: Salen disparados hacia los extremos violentamente
+      const shatteredX = frag.x * 4;
+      const shatteredY = frag.y * 4;
+      const shatteredZ = frag.z * 4 + 20;
+
+      // Interpolación Caos -> Orden
+      let currentX = orderedX + (frag.x - orderedX) * assemblyFactor;
+      let currentY = orderedY + (frag.y - orderedY) * assemblyFactor;
+      let currentZ = orderedZ + (frag.z - orderedZ) * assemblyFactor;
+
+      // Interpolación Orden -> Explosión
+      if (shatterFactor > 0) {
+        currentX += (shatteredX - currentX) * shatterFactor;
+        currentY += (shatteredY - currentY) * shatterFactor;
+        currentZ += (shatteredZ - currentZ) * shatterFactor;
       }
 
-      dummy.position.set(particle.x, particle.y, particle.z);
-      // Alargamos la partícula en Z para dar sensación de velocidad
-      dummy.scale.set(1, 1, globalSpeed * 2);
+      dummy.position.set(currentX, currentY, currentZ);
+      
+      // Rotación
+      dummy.rotation.set(
+        frag.rx * assemblyFactor + (state.clock.elapsedTime * 3) * shatterFactor,
+        frag.ry * assemblyFactor + (state.clock.elapsedTime * 3) * shatterFactor,
+        frag.rz * assemblyFactor + (state.clock.elapsedTime * 3) * shatterFactor
+      );
+      
+      dummy.scale.setScalar(1 + shatterFactor * 3);
       dummy.updateMatrix();
-      meshRef.current!.setMatrixAt(i, dummy.matrix);
+      fragmentsRef.current!.setMatrixAt(i, dummy.matrix);
     });
-    meshRef.current.instanceMatrix.needsUpdate = true;
+    
+    fragmentsRef.current.instanceMatrix.needsUpdate = true;
+
+    // Kinesis Tipográfica (El texto reacciona elásticamente)
+    if (shatterFactor > 0) {
+      // El texto se estira hacia la cámara y se desvanece
+      textRef.current.scale.z = 1 + shatterFactor * 20;
+      textRef.current.scale.x = 1 + shatterFactor * 0.5;
+      textRef.current.scale.y = 1 + shatterFactor * 0.5;
+      textRef.current.fillOpacity = Math.max(0, 1 - shatterFactor * 1.5);
+      
+      descRef.current.fillOpacity = Math.max(0, 1 - shatterFactor * 2);
+    } else {
+      textRef.current.scale.set(1, 1, 1);
+      // El texto aparece del caos
+      textRef.current.fillOpacity = 1 - assemblyFactor * 0.9; 
+      descRef.current.fillOpacity = 1 - assemblyFactor;
+    }
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-      <boxGeometry args={[0.05, 0.05, 2]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.3} blending={THREE.AdditiveBlending} />
-    </instancedMesh>
+    <group position={[0, 0, z]}>
+      {/* Fragmentos Arquitectónicos */}
+      <instancedMesh ref={fragmentsRef} args={[undefined, undefined, fragmentCount]}>
+        <boxGeometry args={[1, 0.2, 0.2]} />
+        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={2} wireframe={false} blending={THREE.AdditiveBlending} />
+      </instancedMesh>
+
+      {/* Luz puntual que nace del orden */}
+      <pointLight color={color} intensity={5} distance={40} />
+
+      {/* Tipografía Monumental */}
+      <Text
+        ref={textRef}
+        position={[0, 2, 0]}
+        fontSize={14}
+        color="#ffffff"
+        anchorX="center"
+        anchorY="middle"
+        letterSpacing={-0.05}
+        fontWeight="bold"
+      >
+        {year}
+      </Text>
+      
+      <Text
+        ref={descRef}
+        position={[0, -6, 0]}
+        fontSize={1.5}
+        color={color}
+        anchorX="center"
+        anchorY="middle"
+        letterSpacing={0.2}
+      >
+        {desc}
+      </Text>
+    </group>
   );
 }
 
 export default function TimelineMaze() {
   const groupRef = useRef<THREE.Group>(null);
-  const gateRefs = useRef<(THREE.Group | null)[]>([]);
 
-  // Generamos anillos cuánticos para el laberinto
   const gates = useMemo(() => [
-    { year: "2021", desc: "Los Fundamentos", z: -40, color: "#FF0055", speed: 0.005 }, // Magenta
-    { year: "2023", desc: "Desarrollo Full-Stack", z: -80, color: "#FF5A00", speed: -0.004 }, // Naranja
-    { year: "2024", desc: "Arquitecturas Empresariales", z: -120, color: "#00F0FF", speed: 0.006 }, // Cian
-    { year: "PRESENTE", desc: "Arquitecto de Realidades", z: -160, color: "#ffffff", speed: -0.003 }
+    { year: "2021", desc: "LOS FUNDAMENTOS", z: -40, color: "#FF0055" }, // Magenta
+    { year: "2023", desc: "FULL-STACK", z: -100, color: "#FF5A00" }, // Naranja
+    { year: "2024", desc: "ARQUITECTURAS MASIVAS", z: -160, color: "#00F0FF" }, // Cian
+    { year: "PRESENTE", desc: "ARQUITECTO DE REALIDADES", z: -220, color: "#ffffff" }
   ], []);
 
   useFrame((state) => {
     const rawProgress = useStore.getState().scrollProgress;
     
     if (groupRef.current) {
-      // El scroll empuja todo el laberinto hacia la cámara
+      // Inercia de avance global
       const timelineProgress = Math.max(0, (rawProgress - 0.4) * 2.5);
-      const targetZ = timelineProgress * 200; 
+      const targetZ = timelineProgress * 250; 
       
-      // Interpolación suave para el avance inercial
       groupRef.current.position.z += (targetZ - groupRef.current.position.z) * 0.05;
-      
-      // Oscilación global
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.5;
-
-      // Actualizar cada puerta individualmente
-      gateRefs.current.forEach((gate, i) => {
-        if (!gate) return;
-        
-        // Rotación de vórtice constante
-        gate.rotation.z += gates[i].speed;
-
-        // Calcular posición absoluta en Z de esta puerta respecto a la cámara
-        const absoluteZ = gates[i].z + groupRef.current!.position.z;
-        
-        // Reactividad: Si la cámara está a punto de cruzar (distancia entre -10 y 5)
-        if (absoluteZ > -15 && absoluteZ < 5) {
-          // Efecto de pulso/expansión cuántica
-          const scaleTarget = 1 + Math.sin(state.clock.elapsedTime * 10) * 0.05;
-          gate.scale.setScalar(gate.scale.x + (scaleTarget - gate.scale.x) * 0.1);
-        } else {
-          // Escala normal
-          gate.scale.setScalar(gate.scale.x + (1 - gate.scale.x) * 0.1);
-        }
-      });
     }
   });
 
   return (
-    <>
-      <WarpParticles />
-      <group ref={groupRef} position={[0, -2, -10]}>
-        {gates.map((gate, i) => (
-          <group 
-            key={i} 
-            position={[0, 0, gate.z]} 
-            ref={(el) => { gateRefs.current[i] = el; }}
-          >
-            {/* Anillo Cuántico (Torus Wireframe) */}
-            <mesh rotation={[0, 0, Math.PI / 2]}>
-              <torusGeometry args={[12, 0.5, 4, 16]} />
-              <meshStandardMaterial 
-                color={gate.color} 
-                emissive={gate.color} 
-                emissiveIntensity={2} 
-                wireframe={true} 
-                transparent 
-                opacity={0.4} 
-                blending={THREE.AdditiveBlending} 
-              />
-            </mesh>
-            
-            {/* Segundo anillo interior cruzado para mayor complejidad */}
-            <mesh rotation={[0, 0, 0]}>
-              <torusGeometry args={[10, 0.2, 3, 24]} />
-              <meshStandardMaterial 
-                color={gate.color} 
-                emissive={gate.color} 
-                emissiveIntensity={1} 
-                wireframe={true} 
-                transparent 
-                opacity={0.2} 
-                blending={THREE.AdditiveBlending} 
-              />
-            </mesh>
-
-            {/* Luz interna del portal */}
-            <pointLight color={gate.color} intensity={5} distance={30} />
-
-            {/* Textos Flotantes Inalterables por la rotación del anillo */}
-            <group rotation={[0, 0, 0]}>
-              <Text 
-                position={[0, 3, 0]} 
-                fontSize={2} 
-                color="#ffffff" 
-                anchorX="center" 
-                anchorY="middle" 
-                letterSpacing={0.1}
-              >
-                {gate.year}
-              </Text>
-              <Text 
-                position={[0, -3, 0]} 
-                fontSize={1} 
-                color={gate.color} 
-                anchorX="center" 
-                anchorY="middle" 
-                letterSpacing={0.2}
-              >
-                {gate.desc}
-              </Text>
-            </group>
-          </group>
-        ))}
-      </group>
-    </>
+    <group ref={groupRef} position={[0, -2, -10]}>
+      {gates.map((gate, i) => (
+        <ChaosGate key={i} {...gate} />
+      ))}
+    </group>
   );
 }

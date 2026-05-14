@@ -6,33 +6,33 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const eras = [
   {
     year: "2021",
-    title: "LOS FUNDAMENTOS TÉCNICOS",
-    desc: "Bases sólidas en ingeniería de software. Construcción algorítmica desde cero y dominio de la ejecución técnica pura.",
-    tech: "Software Engineering, Algorithms, Delivery",
+    title: "EL INICIO DEL CÓDIGO",
+    desc: "Los primeros pasos en el ecosistema tecnológico. Inmersión profunda en JavaScript, React y las bases del desarrollo de software que cimentaron mi lógica.",
+    tech: "JavaScript, React, Frontend",
     color: "text-brand-magenta",
     borderColor: "border-brand-magenta"
   },
   {
     year: "2023",
-    title: "TRANSICIÓN AL PRODUCTO",
-    desc: "Del código a la visión global. Despliegues de sistemas masivos y las primeras incursiones en la gestión de flujo, automatización de procesos y arquitecturas Backend.",
-    tech: "Full-Stack, Lean IT, Process Automation",
+    title: "EL PIVOT AL MANAGEMENT",
+    desc: "El descubrimiento de la gestión ágil. Transición de escribir código aislado a orquestar equipos, adoptando el Project Management para destrabar el caos operativo.",
+    tech: "Scrum Master, Agile, Project Management",
     color: "text-brand-orange",
     borderColor: "border-brand-orange"
   },
   {
     year: "2024",
-    title: "ORDEN EN EL CAOS INSTITUCIONAL",
-    desc: "Liderazgo en migraciones críticas (analítica del IRS) y plataformas gubernamentales. Mitigación de riesgos, desmantelamiento del caos operativo y entrega de valor bajo presión extrema.",
-    tech: "Scrum Master, Kanban, Risk Mitigation",
+    title: "PRODUCTO, DISEÑO Y MENTORÍA",
+    desc: "Evolución natural hacia Product Owner. Definiendo no solo el 'cómo', sino el 'qué' y el 'por qué'. Inicio de mi etapa como mentor, ayudando a otros talentos a crecer.",
+    tech: "Product Owner, UX/UI, Mentoría",
     color: "text-brand-cyan",
     borderColor: "border-brand-cyan"
   },
   {
-    year: "PRESENTE",
-    title: "ARQUITECTO DE REALIDADES",
-    desc: "El puente estratégico entre la visión de negocio y la ingeniería de élite. Liderazgo de equipos, mentoría ágil y orquestación de ecosistemas digitales que escalan.",
-    tech: "Agile Coach, Product Strategy, Tech Lead",
+    year: "2025",
+    title: "CREACIÓN DE ECOSISTEMAS",
+    desc: "La integración total. Creación de productos complejos desde cero uniendo código, gestión, diseño y estrategia. Un perfil holístico madurado por la experiencia.",
+    tech: "Product Creator, Tech Lead, Estrategia",
     color: "text-white",
     borderColor: "border-white"
   }

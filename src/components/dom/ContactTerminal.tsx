@@ -51,10 +51,10 @@ export default function ContactTerminal() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={\`group flex flex-col items-center justify-center p-8 border border-white/10 bg-black/50 backdrop-blur-md transition-all duration-500 hover:bg-white/5 cursor-crosshair\`}
+              className={`group flex flex-col items-center justify-center p-8 border border-white/10 bg-black/50 backdrop-blur-md transition-all duration-500 hover:bg-white/5 cursor-crosshair`}
             >
               <span className="text-white/30 font-mono text-xs mb-4">{"// " + link.label.toUpperCase()}</span>
-              <span className={\`text-2xl md:text-3xl font-bold text-white transition-colors duration-300 \${link.color}\`}>
+              <span className={`text-2xl md:text-3xl font-bold text-white transition-colors duration-300 ${link.color}`}>
                 {link.label}
               </span>
             </motion.a>

@@ -1,5 +1,4 @@
 import Scene from '@/components/canvas/Scene';
-import ProjectList from '@/components/dom/ProjectList';
 import MagneticButton from '@/components/dom/MagneticButton';
 import ScrambleText from '@/components/dom/ScrambleText';
 import ProjectArchive from '@/components/dom/ProjectArchive';
@@ -63,18 +62,9 @@ export default function Home() {
 
         {/* TIMELINE (El Laberinto Horizontal) */}
         <TimelineDOM />
-
-        {/* PROYECTOS (Fuego Insubordinado) */}
-        <section className="w-full pointer-events-none flex flex-col items-center justify-center relative bg-black/50 backdrop-blur-sm pt-32">
-            <div className="w-full max-w-6xl mx-auto px-8 pointer-events-auto mb-32">
-
-                <ProjectList />
-            </div>
-            
-            {/* THE ARCHIVE (28+ Proyectos) */}
-            <div className="w-full pointer-events-auto bg-black border-t border-white/10">
-              <ProjectArchive />
-            </div>
+        {/* THE ARCHIVE (28+ Proyectos) */}
+        <section className="w-full pointer-events-auto bg-black border-t border-white/10">
+          <ProjectArchive />
         </section>
 
         {/* CORRIENTE DE CONSCIENCIA (Ensayos) */}

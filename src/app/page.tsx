@@ -4,7 +4,7 @@ import ScrambleText from '@/components/dom/ScrambleText';
 import ProjectArchive from '@/components/dom/ProjectArchive';
 import CreatorConsole from '@/components/dom/CreatorConsole';
 import Essays from '@/components/dom/Essays';
-import SkillCloud from '@/components/dom/SkillCloud';
+import TechBento from '@/components/dom/TechBento';
 import ContactTerminal from '@/components/dom/ContactTerminal';
 import TimelineDOM from '@/components/dom/TimelineDOM';
 
@@ -44,17 +44,19 @@ export default function Home() {
           </div>
         </section>
         
-        {/* ABOUT (Máscara de Monet) */}
-        <section className="min-h-[200vh] w-full pointer-events-none flex flex-col items-center justify-center pt-32">
-            <div className="max-w-4xl mx-auto px-8 pointer-events-auto mix-blend-difference text-center">
-              <h2 className="text-4xl md:text-7xl font-bold text-white mb-8">La forma sigue<br/><span className="text-brand-magenta italic">al contenido.</span></h2>
-              <p className="text-xl md:text-3xl text-white/80 font-sans leading-relaxed">
-                Transformando el caos técnico y operativo en flujos ágiles y precisos. El orden no se descubre, se construye.
+        {/* ARSENAL TECNOLOGICO (Bento Grid) */}
+        <section className="min-h-screen w-full relative pointer-events-auto bg-[#050505] py-32 z-20 border-y border-white/5">
+            <div className="max-w-7xl mx-auto px-8 mb-16 text-center">
+              <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 uppercase tracking-tighter leading-none">
+                Ecosistema<br/>
+                <span className="text-brand-cyan italic lowercase tracking-normal text-5xl md:text-8xl">operativo.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-white/60 font-sans leading-relaxed max-w-2xl mx-auto border-t border-white/10 pt-6 mt-8">
+                Herramientas, frameworks y metodologías para construir orden a partir del caos.
               </p>
-              
-              {/* Stack Cloud */}
-              <SkillCloud />
             </div>
+            
+            <TechBento />
         </section>
 
         {/* CREADOR CONSOLE (Split Screen) */}

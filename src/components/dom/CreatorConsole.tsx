@@ -9,30 +9,30 @@ import { useScroll } from 'framer-motion';
 // Definición de Clústeres (MÁS ELEMENTOS PARA MAYOR DENSIDAD)
 const CLUSTERS = [
   // LÓGICOS (Izquierda) - Cyan
-  { id: 'l1', label: 'Arquitectura de Sistemas', pos: [-5, 4, -1], type: 0, color: '#00ffff' },
-  { id: 'l2', label: 'Estructuras de Datos', pos: [-7, 2, 1], type: 0, color: '#00ffff' },
-  { id: 'l3', label: 'Algoritmos CORE', pos: [-4, 0, -2], type: 0, color: '#00ffff' },
-  { id: 'l4', label: 'Sistemas Escalables', pos: [-8, -1, 0], type: 0, color: '#00ffff' },
-  { id: 'l5', label: 'Ingeniería de Software', pos: [-5, -3, 2], type: 0, color: '#00ffff' },
-  { id: 'l6', label: 'Bases de Datos Relacionales', pos: [-3, 2, -3], type: 0, color: '#00ffff' },
-  { id: 'l7', label: 'Infraestructura Cloud', pos: [-6, -4, -1], type: 0, color: '#00ffff' },
-  { id: 'l8', label: 'DevOps & CI/CD', pos: [-9, 3, 0], type: 0, color: '#00ffff' },
-  { id: 'l9', label: 'Optimización de Rendimiento', pos: [-3, -5, 1], type: 0, color: '#00ffff' },
-  { id: 'l10', label: 'Patrones de Diseño', pos: [-7, 5, 2], type: 0, color: '#00ffff' },
-  { id: 'l11', label: 'Seguridad & Criptografía', pos: [-10, 0, -1], type: 0, color: '#00ffff' },
+  { id: 'l10', label: 'Patrones de Diseño', pos: [-6, 5.5, -1], type: 0, color: '#00ffff' },
+  { id: 'l1', label: 'Arquitectura de Sistemas', pos: [-4.5, 4.5, 1], type: 0, color: '#00ffff' },
+  { id: 'l8', label: 'DevOps & CI/CD', pos: [-7, 3.5, 0], type: 0, color: '#00ffff' },
+  { id: 'l2', label: 'Estructuras de Datos', pos: [-5, 2.5, 2], type: 0, color: '#00ffff' },
+  { id: 'l6', label: 'Bases de Datos Relacionales', pos: [-8, 1.5, -1], type: 0, color: '#00ffff' },
+  { id: 'l3', label: 'Algoritmos CORE', pos: [-4, 0.5, 0], type: 0, color: '#00ffff' },
+  { id: 'l4', label: 'Sistemas Escalables', pos: [-7.5, -0.5, 1], type: 0, color: '#00ffff' },
+  { id: 'l11', label: 'Seguridad & Criptografía', pos: [-9, -1.5, -1], type: 0, color: '#00ffff' },
+  { id: 'l5', label: 'Ingeniería de Software', pos: [-4.5, -2.5, 2], type: 0, color: '#00ffff' },
+  { id: 'l7', label: 'Infraestructura Cloud', pos: [-6.5, -3.5, 0], type: 0, color: '#00ffff' },
+  { id: 'l9', label: 'Optimización de Rendimiento', pos: [-3.5, -4.5, 1], type: 0, color: '#00ffff' },
 
   // CREATIVOS (Derecha) - Naranja
-  { id: 'c1', label: 'Estética Visual', pos: [5, 4, 1], type: 1, color: '#ff5a00' },
-  { id: 'c2', label: 'Narrativa Expandida', pos: [7, 2, -1], type: 1, color: '#ff5a00' },
-  { id: 'c3', label: 'Diseño UI/UX', pos: [4, 0, 2], type: 1, color: '#ff5a00' },
-  { id: 'c4', label: 'Psicología del Usuario', pos: [8, -1, 0], type: 1, color: '#ff5a00' },
-  { id: 'c5', label: 'Caos Fértil', pos: [5, -3, -2], type: 1, color: '#ff5a00' },
-  { id: 'c6', label: 'Dirección de Arte', pos: [3, 2, 3], type: 1, color: '#ff5a00' },
-  { id: 'c7', label: 'Teoría del Color', pos: [6, -4, 1], type: 1, color: '#ff5a00' },
-  { id: 'c8', label: 'Microinteracciones', pos: [9, 3, 0], type: 1, color: '#ff5a00' },
-  { id: 'c9', label: 'Pensamiento Lateral', pos: [3, -5, -1], type: 1, color: '#ff5a00' },
-  { id: 'c10', label: 'Identidad de Marca', pos: [7, 5, -2], type: 1, color: '#ff5a00' },
-  { id: 'c11', label: 'Composición Espacial', pos: [10, 0, 1], type: 1, color: '#ff5a00' },
+  { id: 'c10', label: 'Identidad de Marca', pos: [6, 5.5, -1], type: 1, color: '#ff5a00' },
+  { id: 'c1', label: 'Estética Visual', pos: [4.5, 4.5, 1], type: 1, color: '#ff5a00' },
+  { id: 'c8', label: 'Microinteracciones', pos: [7, 3.5, 0], type: 1, color: '#ff5a00' },
+  { id: 'c6', label: 'Dirección de Arte', pos: [5, 2.5, -2], type: 1, color: '#ff5a00' },
+  { id: 'c2', label: 'Narrativa Expandida', pos: [8, 1.5, 1], type: 1, color: '#ff5a00' },
+  { id: 'c11', label: 'Composición Espacial', pos: [4, 0.5, 0], type: 1, color: '#ff5a00' },
+  { id: 'c3', label: 'Diseño UI/UX', pos: [7.5, -0.5, -1], type: 1, color: '#ff5a00' },
+  { id: 'c4', label: 'Psicología del Usuario', pos: [9, -1.5, 1], type: 1, color: '#ff5a00' },
+  { id: 'c9', label: 'Pensamiento Lateral', pos: [4.5, -2.5, -2], type: 1, color: '#ff5a00' },
+  { id: 'c7', label: 'Teoría del Color', pos: [6.5, -3.5, 0], type: 1, color: '#ff5a00' },
+  { id: 'c5', label: 'Caos Fértil', pos: [3.5, -4.5, 1], type: 1, color: '#ff5a00' },
 ];
 
 // 1. EL SISTEMA DE PARTÍCULAS DE FONDO
@@ -88,21 +88,27 @@ function BackgroundParticles() {
       vec3 pos = position;
       
       if (isRight < 0.5) {
-        // Lógica
-        pos.y += sin(uTime + pos.x) * 0.05;
-        vColor = vec3(0.0, 1.0, 1.0); 
-        vAlpha = 0.5; // Visibilidad aumentada
-      } else {
-        // Creatividad
-        float noise = sin(pos.y * 1.5 + uTime) * cos(pos.z * 1.5 + uTime);
-        pos.x += noise * 0.3;
-        pos.y += cos(pos.x * 1.5 + uTime) * 0.3;
-        vColor = vec3(1.0, 0.4, 0.0); 
+        // Lógica: Datos fluyendo, estructura viva
+        float wave = sin(pos.x * 2.0 + uTime * 3.0) * cos(pos.z * 2.0 + uTime * 2.0);
+        pos.y += wave * 0.15;
+        vColor = mix(vec3(0.0, 0.8, 1.0), vec3(0.0, 1.0, 0.8), wave);
         vAlpha = 0.6; // Visibilidad aumentada
+      } else {
+        // Creatividad: Tormenta caótica más dinámica
+        float noise = sin(pos.y * 2.0 + uTime * 2.0) * cos(pos.z * 2.0 + uTime * 1.5);
+        pos.x += noise * 0.5;
+        pos.y += cos(pos.x * 2.0 + uTime * 2.0) * 0.5;
+        pos.z += sin(pos.x * 1.0 + uTime) * 0.4;
+        vColor = mix(vec3(1.0, 0.2, 0.0), vec3(1.0, 0.6, 0.0), noise); 
+        vAlpha = 0.7; // Visibilidad aumentada
       }
       
       vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-      gl_PointSize = (8.0 / -mvPosition.z); // Partículas más grandes
+      
+      // Efecto de tintineo (twinkling)
+      float twinkle = 1.0 + sin(uTime * 5.0 + pos.x * 10.0) * 0.3;
+      gl_PointSize = (10.0 / -mvPosition.z) * twinkle; 
+      
       gl_Position = projectionMatrix * mvPosition;
     }
   `;
@@ -151,7 +157,9 @@ function ForegroundNetwork({ scrollRef, mouseXRef, instructionRef }: { scrollRef
   useFrame((state) => {
     smoothProgress.current += (scrollRef.current - smoothProgress.current) * 0.08;
     smoothMouseX.current += (mouseXRef.current - smoothMouseX.current) * 0.05;
-    const p = smoothProgress.current;
+    
+    // Multiplicamos por 1.5 para que la animación se complete al 66% del scroll
+    const p = Math.min(1, smoothProgress.current * 1.5);
 
     // Desplegar líneas
     const dashOffset = 25 - (p * 25);
@@ -160,7 +168,7 @@ function ForegroundNetwork({ scrollRef, mouseXRef, instructionRef }: { scrollRef
     });
 
     // Revelar nodos
-    const elementOpacity = Math.max(0, Math.min(1, (p - 0.3) * 2.5));
+    const elementOpacity = Math.max(0, Math.min(1, (p - 0.2) * 2.0));
     nodeMats.current.forEach(mat => {
       if (mat) mat.opacity = elementOpacity;
     });
@@ -299,7 +307,7 @@ export default function CreatorConsole() {
   return (
     <section 
       ref={containerRef}
-      className="h-[400vh] w-full bg-[#030303] relative z-20 font-mono border-y border-white/10"
+      className="h-[250vh] w-full bg-[#030303] relative z-20 font-mono border-y border-white/10"
       onMouseMove={handleMouseMove}
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">

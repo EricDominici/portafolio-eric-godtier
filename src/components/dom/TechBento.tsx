@@ -1,93 +1,182 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const SKILL_CATEGORIES = [
+const ASSET_LEDGER = [
   {
-    title: 'Ingeniería & Software',
-    color: 'border-brand-cyan/30',
-    headerColor: 'text-brand-cyan',
-    skills: ['React 19', 'Next.js 15', 'TypeScript', 'Node.js', 'Python', 'TailwindCSS', 'Zustand', 'GraphQL', 'REST APIs', 'PostgreSQL', 'Framer Motion', 'Three.js']
+    id: "01",
+    title: "Producto & Orquestación",
+    roles: ["Product Manager", "Product Owner", "Agile Coach", "Scrum Master"],
+    stack: ["Jira", "Confluence", "Miro", "Figma", "SDLC Tools"],
+    capabilities: ["Scrum a Escala", "Kanban", "Product Discovery", "Design Thinking", "OKRs & KPIs", "Métricas de Flujo"],
+    validation: [
+      "Software Product Management Capstone (U of Alberta)",
+      "Agile Planning for Software Products (U of Alberta)",
+      "Software Processes and Agile Practices (U of Alberta)",
+      "Reviews & Metrics for Software Improvements (U of Alberta)",
+      "Client Needs and Software Requirements (U of Alberta)",
+      "Intro to Software Product Management (U of Alberta)"
+    ],
+    color: "text-brand-orange"
   },
   {
-    title: 'Gestión & Producto',
-    color: 'border-brand-orange/30',
-    headerColor: 'text-brand-orange',
-    skills: ['Scrum a Escala', 'Agile Coach', 'Kanban', 'Product Discovery', 'Design Thinking', 'OKRs', 'KPIs', 'Jira', 'Métricas de Flujo', 'Liderazgo Técnico', 'Gestión de Equipos']
+    id: "02",
+    title: "Ingeniería & Arquitectura",
+    roles: ["Arquitecto de Software", "Data Engineer", "Quant Dev"],
+    stack: ["Python", "Node.js", "PostgreSQL", "Docker", "AWS", "GraphQL", "REST APIs"],
+    capabilities: ["ETL Pipelines", "Arquitectura Cloud", "Microservicios", "Sistemas Distribuidos", "Mitigación de Riesgos", "Automatización Cuantitativa"],
+    validation: [
+      "JavaScript Algorithms & Data Structures (freeCodeCamp)",
+      "Auditoría de 15 años de datos IRS (0 Pérdida)",
+      "Diseño Algorítmico y Matemático"
+    ],
+    color: "text-green-500"
   },
   {
-    title: 'Datos & IA',
-    color: 'border-brand-magenta/30',
-    headerColor: 'text-brand-magenta',
-    skills: ['Machine Learning', 'LLMs', 'Prompt Engineering', 'TensorFlow', 'ETL Pipelines', 'Data Analysis', 'LangChain', 'Sistemas de Recomendación']
+    id: "03",
+    title: "Inteligencia & Lógica",
+    roles: ["Arquitecto AI", "ML Engineer"],
+    stack: ["TensorFlow", "LangChain", "Dialogflow CX", "Python"],
+    capabilities: ["Modelos LLM", "Prompt Engineering", "Sistemas de Recomendación", "IA Conversacional", "Análisis Predictivo"],
+    validation: [
+      "Stress Testing superado en Chatbots Bancarios",
+      "Implementación de Modelos GenAI en Producción"
+    ],
+    color: "text-brand-magenta"
   },
   {
-    title: 'Infra & Prácticas',
-    color: 'border-white/20',
-    headerColor: 'text-white/80',
-    skills: ['Docker', 'AWS', 'Vercel', 'CI/CD', 'GitFlow', 'Clean Code', 'SOLID', 'Arquitectura Cloud', 'Sistemas Distribuidos', 'Microservicios', 'Performance', 'Web Vitals']
+    id: "04",
+    title: "Interfaz & Experiencia",
+    roles: ["Frontend Engineer", "UI/UX Designer"],
+    stack: ["React 19", "Next.js 15", "TypeScript", "TailwindCSS", "Zustand"],
+    capabilities: ["Glassmorphism", "Interfaces Paramétricas", "State Management", "Framer Motion", "Three.js", "WebGL", "GSAP"],
+    validation: [
+      "Sistemas de Diseño Escalables",
+      "Desarrollo de Experiencias 3D y Alta Fidelidad",
+      "Optimización Estricta de Web Vitals"
+    ],
+    color: "text-brand-cyan"
   }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
-};
-
 export default function TechBento() {
+  // Inicialmente expandimos el primer acordeón
+  const [expandedId, setExpandedId] = useState<string | null>("01");
+
+  const toggleAccordion = (id: string) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
-    <motion.div 
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
-      className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4 md:p-8"
-    >
-      {SKILL_CATEGORIES.map((category, idx) => (
-        <motion.div
-          key={idx}
-          variants={itemVariants}
-          className={`
-            relative overflow-hidden rounded-2xl bg-[#0a0a0a] backdrop-blur-md 
-            border ${category.color} p-6 md:p-8
-            hover:bg-[#111] transition-colors duration-500
-            group flex flex-col h-full
-          `}
-        >
-          {/* Subtle background glow on hover */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-          
-          <h3 className={`text-xl font-mono uppercase tracking-widest font-bold mb-6 ${category.headerColor}`}>
-            {category.title}
-          </h3>
-          
-          <div className="flex flex-wrap gap-2 relative z-10 mt-auto">
-            {category.skills.map((skill, i) => (
-              <span 
-                key={i}
-                className="
-                  px-3 py-1.5 text-xs md:text-sm font-sans font-medium text-white/70 
-                  bg-white/5 border border-white/10 rounded-full
-                  hover:text-white hover:bg-white/20 hover:border-white/30 
-                  hover:scale-105 transition-all duration-300 cursor-default
-                "
+    <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
+      <div className="flex flex-col border-t border-white/20">
+        {ASSET_LEDGER.map((asset) => {
+          const isExpanded = expandedId === asset.id;
+
+          return (
+            <div key={asset.id} className="border-b border-white/20">
+              {/* Accordion Header */}
+              <button
+                onClick={() => toggleAccordion(asset.id)}
+                className="w-full flex items-center justify-between py-6 md:py-8 text-left group focus:outline-none focus:bg-white/5 transition-colors cursor-crosshair"
               >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
+                <div className="flex items-center gap-6 md:gap-12">
+                  <span className={`font-mono text-xl md:text-3xl font-bold transition-colors ${isExpanded ? asset.color : 'text-white/30 group-hover:text-white/50'}`}>
+                    [{asset.id}]
+                  </span>
+                  <h3 className={`text-2xl md:text-5xl font-bold uppercase tracking-tighter transition-colors ${isExpanded ? 'text-white' : 'text-white/60 group-hover:text-white'}`}>
+                    {asset.title}
+                  </h3>
+                </div>
+                <div className="flex items-center justify-center w-12 h-12 shrink-0">
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 45 : 0 }}
+                    className={`text-2xl font-mono transition-colors ${isExpanded ? asset.color : 'text-white/40 group-hover:text-white'}`}
+                  >
+                    +
+                  </motion.div>
+                </div>
+              </button>
+
+              {/* Accordion Content */}
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-2 pb-12">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 border border-white/10 bg-black/50 backdrop-blur-sm p-6 md:p-8">
+                        
+                        {/* ROLES */}
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4 border-b border-white/10 pb-2">
+                            [ Roles_Capaces ]
+                          </p>
+                          <ul className="flex flex-col gap-2">
+                            {asset.roles.map((role, i) => (
+                              <li key={i} className="text-sm font-sans text-white/90 flex items-start gap-2">
+                                <span className={`font-mono text-xs mt-0.5 ${asset.color}`}>›</span> {role}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* STACK */}
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4 border-b border-white/10 pb-2">
+                            [ Stack_Operativo ]
+                          </p>
+                          <ul className="flex flex-col gap-2">
+                            {asset.stack.map((item, i) => (
+                              <li key={i} className="text-sm font-sans text-white/70 flex items-start gap-2">
+                                <span className="font-mono text-xs text-white/20 mt-0.5">-</span> {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* CAPACIDADES */}
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4 border-b border-white/10 pb-2">
+                            [ Capacidades_Core ]
+                          </p>
+                          <ul className="flex flex-col gap-2">
+                            {asset.capabilities.map((cap, i) => (
+                              <li key={i} className="text-sm font-sans text-white/90 flex items-start gap-2">
+                                <span className={`font-mono text-xs mt-0.5 ${asset.color}`}>›</span> {cap}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* VALIDACIÓN */}
+                        <div>
+                          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4 border-b border-white/10 pb-2">
+                            [ Validación_Formal ]
+                          </p>
+                          <ul className="flex flex-col gap-3">
+                            {asset.validation.map((val, i) => (
+                              <li key={i} className="text-xs font-mono leading-relaxed text-white/60 flex items-start gap-2">
+                                <span className="text-white/20 mt-0.5">■</span> {val}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }

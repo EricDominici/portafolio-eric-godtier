@@ -44,16 +44,20 @@ export default function Home() {
           </div>
         </section>
         
-        {/* ARSENAL TECNOLOGICO (Bento Grid) */}
+        {/* INVENTARIO DE ACTIVOS (Tech Specs) */}
         <section className="min-h-screen w-full relative pointer-events-auto bg-[#050505] py-32 z-20 border-y border-white/5">
-            <div className="max-w-7xl mx-auto px-8 mb-16 text-center">
-              <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 uppercase tracking-tighter leading-none">
-                Ecosistema<br/>
-                <span className="text-brand-cyan italic lowercase tracking-normal text-5xl md:text-8xl">operativo.</span>
-              </h2>
-              <p className="text-lg md:text-xl text-white/60 font-sans leading-relaxed max-w-2xl mx-auto border-t border-white/10 pt-6 mt-8">
-                Herramientas, frameworks y metodologías para construir orden a partir del caos.
-              </p>
+            <div className="max-w-7xl mx-auto px-8 mb-16">
+              <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-white/10 pb-8">
+                <div>
+                  <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-none mb-2">
+                    Especificaciones<br/>
+                    <span className="text-white/30 italic font-mono text-2xl md:text-5xl tracking-normal">del sistema.</span>
+                  </h2>
+                </div>
+                <p className="text-sm md:text-base text-white/50 font-mono mt-6 md:mt-0 max-w-sm text-left md:text-right border-l md:border-l-0 md:border-r border-brand-cyan/50 pl-4 md:pl-0 md:pr-4">
+                  Inventario exhaustivo de activos operativos, capacidades de ingeniería y validación formal.
+                </p>
+              </div>
             </div>
             
             <TechBento />
